@@ -1,13 +1,13 @@
 package com.github.amag.platform.filter;
 
 import com.arangodb.springframework.core.ArangoOperations;
-import com.github.amag.platform.domain.BaseObject;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Collection;
-import java.util.Set;
 
 @RequiredArgsConstructor
+@Data
 public class AndFilter<T extends Object> implements Filter<T> {
 
     private final Filter<T> firstFilter, secondFilter;

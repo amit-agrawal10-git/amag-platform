@@ -1,6 +1,5 @@
 package com.github.amag.platform.criteria;
 
-import com.arangodb.entity.BaseDocument;
 import com.arangodb.springframework.core.ArangoOperations;
 import com.github.amag.platform.domain.BaseObject;
 import lombok.RequiredArgsConstructor;
