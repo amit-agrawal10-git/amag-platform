@@ -5,16 +5,20 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
 
-@RequiredArgsConstructor
 @Data
+@RequiredArgsConstructor
 public class AndFilter<T extends Object> implements Filter<T> {
 
-    private final Filter<T> firstFilter, secondFilter;
+    private final List<Filter<T>> filters;
 
     @Override
     public Collection<T> evaluate(Collection<T> o, ArangoOperations arangoOperations) {
-        Collection<T> x = firstFilter.evaluate(o,arangoOperations);
-        return secondFilter.evaluate(x,arangoOperations);
+        Collection<T> result = o;
+        for (Filter<T> filter:filters) {
+            result = filter.evaluate(result,arangoOperations);
+        }
+        return result;
     }
 }
