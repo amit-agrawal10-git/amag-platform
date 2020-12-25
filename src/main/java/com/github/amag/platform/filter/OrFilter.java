@@ -21,4 +21,14 @@ public class OrFilter<T extends Object> implements Filter<T> {
         }
         return x;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("("+this.getFilters().get(0).toString());
+        for (int i=1;i<this.getFilters().size();i++)
+            str.append(" OR " +this.getFilters().get(i).toString());
+        str.append(")");
+        return str.toString();
+    }
 }

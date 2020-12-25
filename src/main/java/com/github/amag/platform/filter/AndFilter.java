@@ -21,4 +21,14 @@ public class AndFilter<T extends Object> implements Filter<T> {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("("+this.getFilters().get(0).toString());
+        for (int i=1;i<this.getFilters().size();i++)
+            str.append(" AND " +this.getFilters().get(i).toString());
+        str.append(")");
+        return str.toString();
+    }
 }
